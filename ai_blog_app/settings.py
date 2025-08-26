@@ -93,11 +93,11 @@ WSGI_APPLICATION = 'ai_blog_app.wsgi.application'
 #     }
 # }
 
-os.environ.setdefault("PGNAME", "")
-os.environ.setdefault("PGUSER", "")
-os.environ.setdefault("PGPASSWORD", "")
-os.environ.setdefault("PGHOST", "")
-os.environ.setdefault("PGPORT", "")
+os.environ.setdefault("PGNAME", "railway")
+os.environ.setdefault("PGUSER", "postgres")
+os.environ.setdefault("PGPASSWORD", "oVfFCEUOEQMQlyLiHhwaHYZwXdLzpePR")
+os.environ.setdefault("PGHOST", "mainline.proxy.rlwy.net")
+os.environ.setdefault("PGPORT", "23053")
 
 
 DATABASES = {
