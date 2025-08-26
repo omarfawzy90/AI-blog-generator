@@ -93,13 +93,16 @@ WSGI_APPLICATION = 'ai_blog_app.wsgi.application'
 #     }
 # }
 
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
-        conn_max_age=600,  
-        ssl_require=True
-    ),
-    'engine': 'django.db.backends.postgresql'
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ["PGDATABASE"],
+        'USER': os.environ["PGUSER"],
+        'PASSWORD': os.environ["PGPASSWORD"],
+        'HOST': os.environ["PGHOST"],
+        'PORT': os.environ["PGPORT"],
+    }
 }
 
 
