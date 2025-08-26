@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-pcc4vv9-m5y#n*)zcky(xkh9ti=2_h_o+6eyty^eg2qr6&!1%7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', "ai-blog-generator.up.railway.app"]
 
 
 # Application definition
