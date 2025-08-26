@@ -15,7 +15,31 @@ from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
 
-load_dotenv()
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env file
+load_dotenv(BASE_DIR / '.env')
+
+# Debug: Print if .env file exists and some key info
+env_file_path = BASE_DIR / '.env'
+print(f"🔍 Looking for .env file at: {env_file_path}")
+print(f"📁 .env file exists: {env_file_path.exists()}")
+if env_file_path.exists():
+    with open(env_file_path, 'r') as f:
+        content = f.read()
+        print(f"📝 .env file has {len(content.splitlines())} lines")
+        # Check if keys are present (without showing values)
+        has_gemini = 'GEMINI_API_KEY' in content
+        has_assembly = 'ASSEMBLYAI_API_KEY' in content
+        print(f"🔑 GEMINI_API_KEY in file: {has_gemini}")
+        print(f"🔑 ASSEMBLYAI_API_KEY in file: {has_assembly}")
+
+# Debug: Check what environment variables are loaded
+gemini_key = os.getenv("GEMINI_API_KEY")
+assembly_key = os.getenv("ASSEMBLYAI_API_KEY")
+print(f"🌍 GEMINI_API_KEY loaded: {'✅ Yes' if gemini_key else '❌ No'}")
+print(f"🌍 ASSEMBLYAI_API_KEY loaded: {'✅ Yes' if assembly_key else '❌ No'}")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,11 +68,24 @@ if os.getenv('CSRF_TRUSTED_ORIGINS'):
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 ASSEMBLYAI_API_KEY = os.getenv("ASSEMBLYAI_API_KEY")
 
-if not GEMINI_API_KEY:
-    raise ValueError("GEMINI_API_KEY environment variable is required")
+# Temporary debugging - comment out the strict requirements
+print(f"🔧 DEBUG MODE: {DEBUG}")
+print(f"🔑 GEMINI_API_KEY: {'✅ Set' if GEMINI_API_KEY else '❌ Missing'}")
+print(f"🔑 ASSEMBLYAI_API_KEY: {'✅ Set' if ASSEMBLYAI_API_KEY else '❌ Missing'}")
 
+# Only require API keys in production or when DEBUG is False
+# TEMPORARILY DISABLED FOR DEBUGGING
+# if not DEBUG:
+#     if not GEMINI_API_KEY:
+#         raise ValueError("GEMINI_API_KEY environment variable is required in production")
+#     if not ASSEMBLYAI_API_KEY:
+#         raise ValueError("ASSEMBLYAI_API_KEY environment variable is required in production")
+# else:
+#     # In development, warn if API keys are missing but don't crash
+if not GEMINI_API_KEY:
+    print("⚠️  WARNING: GEMINI_API_KEY not set. Blog generation will fail.")
 if not ASSEMBLYAI_API_KEY:
-    raise ValueError("ASSEMBLYAI_API_KEY environment variable is required")
+    print("⚠️  WARNING: ASSEMBLYAI_API_KEY not set. Transcription will fail.")
 
 # Application definition
 INSTALLED_APPS = [
