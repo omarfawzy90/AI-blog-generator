@@ -93,11 +93,11 @@ WSGI_APPLICATION = 'ai_blog_app.wsgi.application'
 #     }
 # }
 
-os.environ.setdefault("PGDATABASE")
-os.environ.setdefault("PGUSER")
-os.environ.setdefault("PGPASSWORD")
-os.environ.setdefault("PGHOST")
-os.environ.setdefault("PGPORT")
+os.environ.setdefault("PGDATABASE", "")
+os.environ.setdefault("PGUSER", "")
+os.environ.setdefault("PGPASSWORD", "")
+os.environ.setdefault("PGHOST", "")
+os.environ.setdefault("PGPORT", "")
 
 
 DATABASES = {
