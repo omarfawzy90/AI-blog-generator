@@ -19,6 +19,7 @@ google-generativeai==0.8.5
 googleapis-common-protos==1.70.0
 grpcio==1.74.0
 grpcio-status==1.71.2
+gunicorn==23.0.0
 h11==0.16.0
 httpcore==1.0.9
 httplib2==0.22.0
@@ -26,6 +27,7 @@ httpx==0.28.1
 idna==3.10
 jiter==0.10.0
 openai==1.101.0
+packaging==25.0
 proto-plus==1.26.1
 protobuf==5.29.5
 psycopg==3.2.9
