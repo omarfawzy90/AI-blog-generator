@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'ai_blog_app.wsgi.application'
 #     }
 # }
 
-os.environ.setdefault("PGDATABASE", "")
+os.environ.setdefault("PGNAME", "")
 os.environ.setdefault("PGUSER", "")
 os.environ.setdefault("PGPASSWORD", "")
 os.environ.setdefault("PGHOST", "")
@@ -103,7 +103,7 @@ os.environ.setdefault("PGPORT", "")
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ["PGDATABASE"],
+        'NAME': os.environ["PGNAME"],
         'USER': os.environ["PGUSER"],
         'PASSWORD': os.environ["PGPASSWORD"],
         'HOST': os.environ["PGHOST"],
