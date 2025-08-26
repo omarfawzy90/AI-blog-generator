@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog post details</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="flex flex-col min-h-screen justify-between font-sans antialiased"> 
+
+    <nav class="bg-blue-900 p-4 text-white flex justify-between">
+        <div>
+        <a href="/">
+         <h1 class="text-3xl font-bold text-center"> 
+            AI Blog Generator
+         </h1>
+        </a>
+        </div>
+        <div>
+             <p class="mx-4"> Welcome, {{ user.username }}</p>
+             <a href="/" class="ml-4 text-white hover:underline mx-4 hover:cursor-pointer">Home</a>
+            <a href="/blog-list" class="ml-4 text-white hover:underline hover:cursor-pointer mx-4">My Blogs</a>
+            <a href="logout" class="text-white hover:underline hover:cursor-pointer">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 mt-10 sm:px-0">
+        <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
+            <section>
+                <h2 class="text-xl p-4 font-semibold">Blog Post Details</h2>
+                    <div class="border border-gray-300 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold">{{ blog.youtube_title }}</h3>
+                        <p>{{ blog.content }}</p>
+                        <hr class="my-4 border-gray-300">
+                        <h4 class="text-lg font-semibold">Video title</h4>
+                        <p class="text-gray-700">{{ blog.youtube_title }}</p>
+                        <h4 class="text-lg font-semibold mt-4">YouTube Link</h4>
+                        <a href="{{ blog.youtube_link }}" class="text-blue-600 hover:underline">Watch on YouTube</a>
+                    </div>
+            </section>
+        </div>
+    </div>
+
+
+<footer class="bg-blue-900 text-white text-center p-4 mt-10">
+        Powered by <a href="https://github.com/omarfawzy90" class="hover:underline text-blue-300">Omar Fawzy</a>
+    </footer>
+</body>
+</html>

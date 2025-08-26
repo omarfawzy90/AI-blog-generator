@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body class="bg-gray-100 font-sans antialiased">
+<nav class="bg-blue-900 p-4 text-white flex justify-between">
+        <div>
+         <h1 class="text-3xl font-bold text-center"> 
+            AI Blog Generator
+         </h1>
+        </div>
+        <div class="py-2">
+            <a href="login" class="text-blue-200 hover:underline">Login</a>
+            <br>
+            <a href="signup" class="text-blue-200 hover:underline">Signup</a>
+
+        </div>
+    </nav>
+
+   
+    <div class="flex items-center justify-center h-screen">
+        <div class="bg-white p-8 shadow-md rounded-lg max-w-md w-full">
+
+            <form class="space-y-4" action="" method="POST">
+
+                {% csrf_token %}
+
+
+                {% if error_message %}
+                <div align="center" style="color: red;">
+                    <h2>
+                        {{ error_message }}
+                    </h2>
+                </div>
+                {% endif %}
+                
+                <h2 class="text-xl font-semibold">Login</h2>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input placeholder=" Type your email address" type="email" id="email" name="email" required class="placeholder:text-xs mt-1 block w-full h-8 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input placeholder=" Type your password" type="password" id="password" name="password" required class="placeholder:text-xs mt-1 block w-full h-8 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-800 hover:cursor-pointer">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
