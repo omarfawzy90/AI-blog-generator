@@ -26,21 +26,19 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-pcc4vv9-m5y#n*)zcky(xkh9ti
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes', 'on')
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'ai-blog-generator.up.railway.app',
-    # Add any additional hosts from environment
-    *os.getenv('ALLOWED_HOSTS', '').split(',') if os.getenv('ALLOWED_HOSTS') else []
-]
+# Build ALLOWED_HOSTS list
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ai-blog-generator.up.railway.app']
+if os.getenv('ALLOWED_HOSTS'):
+    ALLOWED_HOSTS.extend([host.strip() for host in os.getenv('ALLOWED_HOSTS').split(',') if host.strip()])
 
+# Build CSRF_TRUSTED_ORIGINS list
 CSRF_TRUSTED_ORIGINS = [
     "https://ai-blog-generator.up.railway.app",
     "http://localhost:8000",
     "http://127.0.0.1:8000",
-    # Add any additional origins from environment
-    *os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',') if os.getenv('CSRF_TRUSTED_ORIGINS') else []
 ]
+if os.getenv('CSRF_TRUSTED_ORIGINS'):
+    CSRF_TRUSTED_ORIGINS.extend([origin.strip() for origin in os.getenv('CSRF_TRUSTED_ORIGINS').split(',') if origin.strip()])
 
 # API Keys
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
