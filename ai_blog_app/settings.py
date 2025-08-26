@@ -93,11 +93,11 @@ WSGI_APPLICATION = 'ai_blog_app.wsgi.application'
 #     }
 # }
 
-os.environ.setdefault("PGDATABASE", "liftoff_dev")
-os.environ.setdefault("PGUSER", "username")
-os.environ.setdefault("PGPASSWORD", "")
-os.environ.setdefault("PGHOST", "localhost")
-os.environ.setdefault("PGPORT", "23053")
+os.environ.setdefault("PGDATABASE")
+os.environ.setdefault("PGUSER")
+os.environ.setdefault("PGPASSWORD")
+os.environ.setdefault("PGHOST")
+os.environ.setdefault("PGPORT")
 
 
 DATABASES = {
