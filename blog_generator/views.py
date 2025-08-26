@@ -13,6 +13,8 @@ import assemblyai as aai
 import yt_dlp
 import google.generativeai as genai
 from .models import BlogPost
+from youtube_transcript_api import YouTubeTranscriptApi
+
 
 genai.configure(api_key=settings.GEMINI_API_KEY)
 
@@ -104,12 +106,9 @@ def download_audio(link):
     return os.path.join(settings.MEDIA_ROOT, f"{title}.mp3")
 
 
-def get_transcript(link):
-    audio_file = download_audio(link)
-    aai.settings.api_key = "221bcc576eb741e1b5695c4d1c25001b"  # better load from .env
-    transcriber = aai.Transcriber()
-    transcript = transcriber.transcribe(audio_file)
-    return transcript.text
+def get_transcript(video_id):
+    transcript = YouTubeTranscriptApi.get_transcript(video_id)
+    return " ".join([x['text'] for x in transcript])
 
 
 def generate_blog_content(transcription):
