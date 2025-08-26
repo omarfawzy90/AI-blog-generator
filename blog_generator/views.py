@@ -88,6 +88,7 @@ def download_audio(link):
     # Ensure file is written with a safe filename
     ydl_opts = {
         'format': 'bestaudio/best',
+        "cookies": "cookies.txt",  # path to exported cookies
         'outtmpl': os.path.join(settings.MEDIA_ROOT, f'{title}.%(ext)s'),
         'ffmpeg_location': '/opt/homebrew/bin/ffmpeg',
         'postprocessors': [{
